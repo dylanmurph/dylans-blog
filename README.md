@@ -1,3 +1,6 @@
+## Dylan Murphy Server Side CA3 - Laravel Blog <br>
+Golf club blog
+
 ## Usage <br>
 Setting up your development environment on your local machine: <br>
 ```

@@ -1,93 +1,29 @@
-<footer class="bg-green-700 py-20 mt-20">
-    <div class="sm:grid grid-cols-3 w-4/5 pb-10 m-auto border-b-2 border-gray-700">
-        <div>
-            <h3 class="text-l sm:font-bold text-gray-100">
-                Pages
-            </h3>
-
-            <ul class="py-4 sm:text-s pt-4 text-gray-400">
-                <li class="pb-1">
-                    <a href="/">
-                        Home
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/blog">
-                        Blog
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/login">
-                        Login
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/register">
-                        Register
-                    </a>
-                </li>
+<footer class="bg-gradient-to-r from-green-700 to-green-500 py-8 mt-20">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-white">
+            <h3 class="text-lg font-bold">Quick Links</h3>
+            <ul class="pt-4 text-sm">
+                <li><a href="/" class="hover:text-gray-200">Home</a></li>
+                <li><a href="/about" class="hover:text-gray-200">About Us</a></li>
+                <li><a href="/services" class="hover:text-gray-200">Services</a></li>
+                <li><a href="/contact" class="hover:text-gray-200">Contact</a></li>
             </ul>
         </div>
 
-        <div>
-            <h3 class="text-l sm:font-bold text-gray-100">
-                Find Us
-            </h3>
-
-            <ul class="py-4 sm:text-s pt-4 text-gray-400">
-                <li class="pb-1">
-                    <a href="/">
-                        What we do
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Address
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Phone
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div>
-            <h3 class="text-l sm:font-bold text-gray-100">
-                Latest posts
-            </h3>
-
-            <ul class="py-4 sm:text-s pt-4 text-gray-400">
-                <li class="pb-1">
-                    <a href="/">
-                        Why we love tech
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Why we love design
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Why to use Laravel
-                    </a>
-                </li>
-                <li class="pb-1">
-                    <a href="/">
-                        Why PHP is the best
-                    </a>
-                </li>
-            </ul>
+        <div class="flex space-x-6">
+            <a href="https://facebook.com" class="text-white hover:text-gray-200">
+                <img src="/images/social-fb.png" alt="Facebook" class="h-10 hover:opacity-75 cursor-pointer">
+            </a>
+            <a href="https://twitter.com" class="text-white hover:text-gray-200">
+                <img src="/images/social-x.png" alt="X" class="h-10 hover:opacity-75 cursor-pointer">
+            </a>
+            <a href="https://instagram.com" class="text-white hover:text-gray-200">
+                <img src="/images/social-insta.png" alt="Instagram" class="h-10 hover:opacity-75 cursor-pointer">
+            </a>
         </div>
     </div>
-    <p class="w-25 w-4/5 pb-3 m-auto text-xs text-gray-100 pt-6">
-        Copyright 2017-2021 Code With Dary. All Rights Reserved
-    </p>
+
+    <hr class="border-white mt-6 mb-4">
+
+    <p class="text-center text-white text-xs">&copy; 2025 Dylan Murphy. All rights reserved.</p>
 </footer>

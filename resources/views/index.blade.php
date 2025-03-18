@@ -1,164 +1,102 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="background-image grid grid-cols-1 m-auto">
-        <div class="flex text-gray-100 pt-10">
-            <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block text-center">
-                <h1 class="sm:text-white-700 text-5xl uppercase font-extrabold pb-14"
-                    style="-webkit-text-stroke: 2px black; color: white;">
-                    Want to build the perfect Golf Bag?
-                </h1>
 
-                <h2 class="sm:text-white-700 text-3xl font-extrabold"
-                    style="-webkit-text-stroke: 1px black; color: white">
-                    Golf club reviews and comparisons
-                </h2>
+    <div class="mt-16">
+    <div class="relative w-full h-96 bg-cover bg-center" style="background-image: url('/images/banner.jpg');">
+        <div class="absolute inset-0 flex justify-center items-center">
+            <h1 class="text-6xl text-white font-bold transform -translate-x-1/2 -translate-y-1/2 left-1/4 absolute">Driver's Digest</h1>
+        </div>
+        <div class="absolute inset-0 flex justify-end items-center p-8">
+            <div class="max-w-md text-center bg-white rounded-lg shadow-lg border border-gray-200 p-6">
+                <h2 class="text-xl text-gray-600 mb-4">From Driver to Putter – We’ve Got You Covered</h2>
+                <br>
+                <h2 class="text-xl text-gray-600 mb-4">Discover the Best Golf Clubs for Every Skill Level</h2>
+                <br>
+                <h2 class="text-xl font-bold text-gray-600 mb-4">Elevate Your Golf Performance with our reviews and insights</h2>
+                <a href="/blog" class="inline-block px-6 py-3 mt-6 text-white bg-green-700 rounded-full shadow-md hover:bg-green-500 hover:cursor-pointer transition duration-300">Find Out More</a>
             </div>
         </div>
     </div>
 
-    <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
-        <div class="m-auto sm:m-auto text-left w-4/5 block">
-            <h2 class="text-3xl font-extrabold text-gray-600">
-                Struggling to find the right golf clubs for you?
-            </h2>
-
-            <p class="py-8 text-gray-500 text-s">
-                We do all the heavy lifting for you. From budget-friendly options to premium high-performance clubs,
-                we've got you covered.
-            </p>
-
-            <p class="font-extrabold text-gray-600 text-s pb-9">
-                We review and compare the leading brands of golf clubs to help you build the perfect golf bag tailored
-                to your needs.
-            </p>
-
-            <a href="/blog" class="uppercase bg-blue-500 text-gray-100 text-s py-3 px-8 rounded-3xl">
-                Find Out More
-            </a>
+    <section class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+        <div class="p-6 bg-white rounded-lg shadow-lg border border-gray-200 transform scale-100 hover:scale-105 transition duration-300 max-w-full">
+            <h2 class="text-3xl font-semibold mb-4 text-center">Latest Post</h2>
+            @if($latestBlogPost)
+                <img src="{{ asset('images/' . $latestBlogPost->image_path) }}" alt="{{ $latestBlogPost->title }}" class="w-full h-64 object-cover mb-4">
+                <p class="text-lg text-gray-700 mb-4">{{ $latestBlogPost->title }}</p>
+                <a href="/blog/{{ $latestBlogPost->slug }}" class="inline-block px-4 py-2 mt-6 text-white bg-green-700 rounded-full shadow-md hover:bg-green-500 hover:cursor-pointer transition duration-300">Read More</a>
+            @else
+                <p class="text-lg text-gray-700 mb-4">No blog posts available.</p>
+            @endif
         </div>
-    </div>
 
-    <div class="text-center p-15 bg-black text-white">
-        <h2 class="text-2xl pb-5 text-l">
-            Our Latest Golf Club Reviews
-        </h2>
+        <div class="p-6 bg-white rounded-lg shadow-lg border border-gray-200 transform scale-100 hover:scale-105 transition duration-300 max-w-full">
+            <h2 class="text-3xl font-semibold mb-4 text-center">Latest News</h2>
+            @if($latestNewsPost)
+                <img src="{{ asset('images/' . $latestNewsPost->image_path) }}" alt="{{ $latestNewsPost->title }}" class="w-full h-64 object-cover mb-4">
+                <p class="text-lg text-gray-700 mb-4">{{ $latestNewsPost->title }}</p>
+                <a href="/blog/{{ $latestNewsPost->slug }}" class="inline-block px-4 py-2 mt-6 text-white bg-green-700 rounded-full shadow-md hover:bg-green-500 hover:cursor-pointer transition duration-300">Read More</a>
+            @else
+                <p class="text-lg text-gray-700 mb-4">No news posts available.</p>
+            @endif
+        </div>
+    </section>
 
-        <span class="font-extrabold block text-4xl py-1">
-            From Driver to Putter – We’ve Got You Covered
-        </span>
-        <span class="font-extrabold block text-4xl py-1">
-            Discover the Best Golf Clubs for Every Skill Level
-        </span>
-        <span class="font-extrabold block text-4xl py-1">
-            Unlock the Secrets of Your Game
-        </span>
-        <span class="font-extrabold block text-4xl py-1">
-            Elevate Your Golf Performance with Top Equipment
-        </span>
-    </div>
+    <?php
 
-    <div class="text-center py-15">
-        <span class="uppercase text-s text-gray-400">
-            Blog
-        </span>
+    $equipment = [
+        [
+            'image' => '../images/drivers.jpg',
+            'alt' => 'Drivers',
+            'title' => 'Discover the Best Drivers for Maximum Distance and Accuracy',
+            'description' => 'Maximize your distance and control with the best drivers on the market.'
+        ],
+        [
+            'image' => '/images/irons.jpg',
+            'alt' => 'Irons',
+            'title' => 'How to Choose the Best Irons for Precision and Control',
+            'description' => 'The ideal irons for control and precision on every shot.'
+        ],
+        [
+            'image' => '/images/putters.jpg',
+            'alt' => 'Putter',
+            'title' => 'The Best Putters for Accuracy and Feel',
+            'description' => 'Perfect your putting game with the best putters for accuracy and feel.'
+        ],
+        [
+            'image' => '/images/wedges.jpg',
+            'alt' => 'Wedges',
+            'title' => 'Find the Right Wedges for Short Game Success',
+            'description' => 'Discover the best wedges for a short game that delivers results.'
+        ],
+        [
+            'image' => '/images/hybrids.jpg',
+            'alt' => 'Hybrids',
+            'title' => 'The Best Hybrids for Versatility and Distance',
+            'description' => 'Choose the best hybrids for a balance of distance and accuracy.'
+        ],
+        [
+            'image' => '/images/fairway-woods.jpg',
+            'alt' => 'Fairway Woods',
+            'title' => 'The Ultimate Guide to Fairway Woods for Maximum Performance',
+            'description' => 'Optimize your game with the best fairway woods available.'
+        ]
+    ];
+    ?>
 
-        <h2 class="text-4xl font-bold py-10">
-            Recent Posts
-        </h2>
+    <section class="p-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <?php foreach ($equipment as $item): ?>
+            <div class="relative bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                <img src="<?php echo $item['image']; ?>" alt="<?php echo $item['alt']; ?>" class="w-full h-64 object-cover">
 
-        <p class="m-auto w-4/5 text-gray-500">
-            Our golf experts are constantly reviewing the latest clubs, comparing their features, pros, and cons, and
-            providing in-depth guides to help you choose the best clubs for your game.
-        </p>
-    </div>
-
-    <div class="sm:grid grid-cols-2 w-4/5 m-auto">
-        <div class="flex bg-yellow-700 text-gray-100 pt-10">
-            <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
-                <span class="uppercase text-xs">
-                    DRIVER REVIEWS
-                </span>
-
-                <h3 class="text-xl font-bold py-10">
-                    Discover the Best Drivers for Maximum Distance and Accuracy
-                </h3>
-
-                <p class="text-gray-100 py-4">
-                    Learn about the top-rated drivers on the market, comparing their performance, forgiveness, and
-                    design. We dive deep into the technology that helps you hit longer, straighter drives.
-                </p>
-                <div class="pt-4">
-                    <a href="/blog/drivers"
-                       class="uppercase bg-transparent border-2 border-gray-100 text-gray-100 text-xs py-3 px-5 rounded-3xl">
-                        Find Out More
-                    </a>
+                <div class="absolute inset-x-0 bottom-0 h-1/2 bg-black bg-opacity-50 flex justify-center items-center opacity-0 hover:opacity-100 transition duration-300">
+                    <p class="text-white text-lg font-semibold text-center"><?php echo $item['title']; ?></p>
                 </div>
             </div>
+            <?php endforeach; ?>
         </div>
-
-        <div>
-            <img src="/images/index-drivers.jpg" alt="Drivers">
-        </div>
-    </div>
-
-    <div class="sm:grid grid-cols-2 w-4/5 m-auto py-15">
-        <div class="flex bg-green-600 text-gray-100 pt-10">
-            <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
-                <span class="uppercase text-xs">
-                    IRON COMPARISONS
-                </span>
-
-                <h3 class="text-xl font-bold py-10">
-                    How to Choose the Best Irons for Precision and Control
-                </h3>
-
-                <p class="text-gray-100 py-4">
-                    Whether you're a beginner or an experienced golfer, choosing the right irons can make all the
-                    difference in your game. We compare the top irons and guide you to the best choice for your swing.
-                </p>
-
-                <div class="pt-4">
-                    <a href="/blog/irons"
-                       class="uppercase bg-transparent border-2 border-gray-100 text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
-                        Find Out More
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <img src="/images/index-irons.jpg" alt="Irons">
-        </div>
-    </div>
-
-    <div class="sm:grid grid-cols-2 w-4/5 m-auto py-15">
-        <div class="flex bg-blue-800 text-gray-100 pt-10">
-            <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
-                <span class="uppercase text-xs">
-                    PUTTER REVIEWS
-                </span>
-
-                <h3 class="text-xl font-bold py-10">
-                    The Best Putters for Accuracy and Feel
-                </h3>
-
-                <p class="text-gray-100 py-4">
-                    A great putter can improve your short game and lower your score. We review the best putters,
-                    comparing feel, alignment, and accuracy to help you make the right choice.
-                </p>
-                <div class="pt-4">
-                    <a href="/blog/putters"
-                       class="uppercase bg-transparent border-2 border-gray-100 text-gray-100 text-xs py-3 px-5 rounded-3xl">
-                        Find Out More
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <img src="/images/index-putters.jpg" alt="Putters">
-        </div>
-    </div>
+    </section>
 
 @endsection

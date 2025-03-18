@@ -20,6 +20,7 @@ class Posts extends Migration
             $table->longText('description');
             $table->string('image_path');
             $table->timestamps();
+            $table->string('category');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });

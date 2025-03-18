@@ -19,14 +19,14 @@
         <!-- Navigation Links -->
         <nav class="hidden md:flex items-center space-x-6 ">
             <!-- Blog Link -->
-            <a href="/blog" class="text-white hover:text-gray-200 relative py-2 px-4 transition duration-300 ">
+            <a href="/blog" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300 hover:opacity-75 cursor-pointer">
                 Blog
                 <div
                     class="absolute bottom-0 left-0 w-full h-px bg-white opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
             </a>
 
             <!-- News Link -->
-            <a href="/blog?category=news" class="text-white hover:text-gray-200 relative py-2 px-4 transition duration-300">
+            <a href="/blog?category=news" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300">
                 News
                 <div
                     class="absolute bottom-0 left-0 w-full h-px bg-white opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
@@ -34,34 +34,34 @@
 
             <!-- Reviews Link  -->
             <div class="relative">
-                <a href="/blog?category=reviews" class="text-white hover:text-gray-200 py-2 px-4 transition duration-300 group" id="reviews-toggle">
+                <a href="/blog?category=reviews" class="text-white font-semibold hover:text-gray-200 py-2 px-4 transition duration-300 group" id="reviews-toggle">
                     Reviews
                     <div
                         class="absolute bottom-0 left-0 w-full h-px bg-white opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
                 </a>
+            </div>
 
             <!-- Contact Link -->
-            <a href="/contact" class="text-white hover:text-gray-200 relative py-2 px-4 transition duration-300">
+            <a href="/contact" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300">
                 Contact
                 <div
                     class="absolute bottom-0 left-0 w-full h-px bg-white opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
             </a>
 
             <!-- Login Link -->
-                @guest
-                    <a class="text-white hover:text-gray-200 relative py-2 px-4 transition duration-300" href="{{ route('login') }}">{{ __('Login') }}</a>
-                @else
-                    <span class="text-white hover:text-gray-200 relative py-2 px-4 transition duration-300">{{ Auth::user()->name }}</span>
+            @guest
+                <a class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300" href="{{ route('login') }}">{{ __('Login') }}</a>
+            @else
+                <span class="text-white font-semibold hover:text-gray-200 cursor-pointer relative py-2 px-4 transition duration-300">{{ Auth::user()->name }}</span>
 
-                    <a href="{{ route('logout') }}"
-                       class="text-white hover:text-gray-200 relative py-2 px-4 transition duration-300"
-                       onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                        {{ csrf_field() }}
-                    </form>
-                @endguest
-            </div>
+                <a href="{{ route('logout') }}"
+                   class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300"
+                   onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                    {{ csrf_field() }}
+                </form>
+            @endguest
         </nav>
 
         <!-- Mobile Menu (hidden by default) -->

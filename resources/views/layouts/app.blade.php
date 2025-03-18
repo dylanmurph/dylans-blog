@@ -1,4 +1,3 @@
-<!-- resources/views/layouts/app.blade.php -->
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -23,8 +22,8 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-gray-100 h-screen antialiased leading-none font-sans">
-<div id="app">
+<body class="bg-gray-100 h-screen antialiased leading-none font-sans flex flex-col min-h-screen">
+<div id="app" class="flex-grow">
     @include('layouts.header')
 
     @if(session()->has('message'))
@@ -36,10 +35,10 @@
     <div>
         @yield('content')
     </div>
+</div>
 
-    <div>
-        @include('layouts.footer')
-    </div>
+<div>
+    @include('layouts.footer')
 </div>
 </body>
 </html>

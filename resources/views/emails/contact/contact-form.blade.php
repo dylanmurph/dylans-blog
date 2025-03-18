@@ -1,7 +1,13 @@
-@component('mail::message')
-    {{$data['name']}}
+@extends('layouts.email')
 
-    {{$data['email']}}
+@section('content')
+    <h1>Inquiry from the Website</h1>
 
-    {{$data['message']}}
-@endcomponent
+    <p><strong>Name:</strong> {{$data['name']}}</p>
+
+    <p><strong>Email:</strong> {{$data['email']}}</p>
+
+    <p><strong>Message:</strong></p>
+
+    <p>{{$data['message']}}</p>
+@endsection

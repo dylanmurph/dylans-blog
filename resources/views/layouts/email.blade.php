@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ config('app.name') }}</title>
+</head>
+<body>
+<div>
+    @yield('content')
+</div>
+</body>
+</html>

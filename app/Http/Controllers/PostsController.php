@@ -8,7 +8,7 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
 {
- 
+
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
@@ -18,10 +18,20 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('blog.index')
-            ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
+        // Get the 'category' from the query string
+        $category = $request->query('category');
+
+        // If a category is provided, filter posts by that category
+        if ($category) {
+            $posts = Post::where('category', $category)->orderBy('updated_at', 'DESC')->get();
+        } else {
+            // Otherwise, get all posts
+            $posts = Post::orderBy('updated_at', 'DESC')->get();
+        }
+
+        return view('blog.index', compact('posts', 'category'));
     }
 
     /**
@@ -45,16 +55,17 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'category' => 'required|string|max:255', // Validate the category
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
         ]);
 
         $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
-
         $request->image->move(public_path('images'), $newImageName);
 
         Post::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
+            'category' => $request->input('category'), // Store the category
             'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
             'image_path' => $newImageName,
             'user_id' => auth()->user()->id
@@ -63,6 +74,7 @@ class PostsController extends Controller
         return redirect('/blog')
             ->with('message', 'Your post has been added!');
     }
+
 
     /**
      * Display the specified resource.
@@ -100,12 +112,14 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'category' => 'required|string|max:255', // Validate the category
         ]);
 
         Post::where('slug', $slug)
             ->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
+                'category' => $request->input('category'), // Update the category
                 'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
                 'user_id' => auth()->user()->id
             ]);
@@ -113,6 +127,7 @@ class PostsController extends Controller
         return redirect('/blog')
             ->with('message', 'Your post has been updated!');
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -85,18 +85,18 @@
     ];
     ?>
 
-    <section class="p-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <?php foreach ($equipment as $item): ?>
-            <div class="relative bg-gray-100 rounded-lg overflow-hidden shadow-md">
-                <img src="<?php echo $item['image']; ?>" alt="<?php echo $item['alt']; ?>" class="w-full h-64 object-cover">
+        <section class="p-8">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <?php foreach ($equipment as $item): ?>
+                <div class="relative bg-gray-100 rounded-lg overflow-hidden shadow-md border-2 border-gray-300">
+                    <img src="<?php echo $item['image']; ?>" alt="<?php echo $item['alt']; ?>" class="w-full h-64 object-cover">
 
-                <div class="absolute inset-x-0 bottom-0 h-1/2 bg-black bg-opacity-50 flex justify-center items-center opacity-0 hover:opacity-100 transition duration-300">
-                    <p class="text-white text-lg font-semibold text-center"><?php echo $item['title']; ?></p>
+                    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-black bg-opacity-50 flex justify-center items-center opacity-0 hover:opacity-100 transition duration-300">
+                        <p class="text-white text-lg font-semibold text-center"><?php echo $item['title']; ?></p>
+                    </div>
                 </div>
+                <?php endforeach; ?>
             </div>
-            <?php endforeach; ?>
-        </div>
-    </section>
+        </section>
 
 @endsection

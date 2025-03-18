@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactFormController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,8 @@ Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
-Route::post('/contact/submit', [PagesController::class, 'submitContact']);
+Route::get('contact', [ContactFormController::class, 'create']);
+Route::post('contact', [ContactFormController::class, 'store']);
+
 Route::get('/', [HomeController::class, 'index']);
 

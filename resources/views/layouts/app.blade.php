@@ -27,6 +27,12 @@
 <div id="app">
     @include('layouts.header')
 
+    @if(session()->has('message'))
+        <div class="mt-16 font-bold bg-green-300 p-6 text-center">
+            {{session('message')}}
+        </div>
+    @endif
+
     <div>
         @yield('content')
     </div>

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $latestBlogPost = Post::where('category', '!=', 'news')->latest()->first();
+        $latestNewsPost = Post::where('category', 'news')->latest()->first();
+
+        return view('index', compact('latestBlogPost', 'latestNewsPost'));
     }
 
     public function contact()

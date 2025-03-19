@@ -6,12 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Post extends Model
+class Review extends Model
 {
     use HasFactory;
     use Sluggable;
 
-    protected $fillable = ['title', 'slug', 'description', 'image_path', 'user_id'];
+    protected $fillable = [
+        'title',
+        'slug',
+        'content',
+        'image_path',
+        'equipment_type',
+        'rating',
+        'pros',
+        'cons',
+        'user_id'
+    ];
 
     public function user()
     {

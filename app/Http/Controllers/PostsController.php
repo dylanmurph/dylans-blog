@@ -8,64 +8,42 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
+
+    public function index()
     {
-        // Get the 'category' from the query string
-        $category = $request->query('category');
-
-        // If a category is provided, filter posts by that category
-        if ($category) {
-            $posts = Post::where('category', $category)->orderBy('updated_at', 'DESC')->get();
-        } else {
-            // Otherwise, get all posts
-            $posts = Post::orderBy('updated_at', 'DESC')->get();
-        }
-
-        return view('blog.index', compact('posts', 'category'));
+        $posts = Post::orderBy('created_at', 'DESC')->get();
+        return view('blog.index', compact('posts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show($slug)
+    {
+        return view('blog.show')
+            ->with('post', Post::where('slug', $slug)->first());
+    }
+
     public function create()
     {
         return view('blog.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'category' => 'required|string|max:255', // Validate the category
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
         ]);
 
         $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
-        $request->image->move(public_path('images'), $newImageName);
+        $request->image->move(public_path('images/blog'), $newImageName);
 
         Post::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'category' => $request->input('category'), // Store the category
             'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
             'image_path' => $newImageName,
             'user_id' => auth()->user()->id
@@ -75,73 +53,44 @@ class PostsController extends Controller
             ->with('message', 'Your post has been added!');
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  string  $slug
-     * @return \Illuminate\Http\Response
-     */
-    public function show($slug)
-    {
-        return view('blog.show')
-            ->with('post', Post::where('slug', $slug)->first());
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  string  $slug
-     * @return \Illuminate\Http\Response
-     */
     public function edit($slug)
     {
         return view('blog.edit')
             ->with('post', Post::where('slug', $slug)->first());
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $slug
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $slug)
     {
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'category' => 'required|string|max:255', // Validate the category
+            'image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);
 
-        Post::where('slug', $slug)
-            ->update([
-                'title' => $request->input('title'),
-                'description' => $request->input('description'),
-                'category' => $request->input('category'), // Update the category
-                'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
-                'user_id' => auth()->user()->id
-            ]);
+        $post = Post::where('slug', $slug)->first();
 
-        return redirect('/blog')
-            ->with('message', 'Your post has been updated!');
+        if ($request->hasFile('image')) {
+            $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+            $request->image->move(public_path('images/blog'), $newImageName);
+            $post->image_path = $newImageName;
+        }
+
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+        $post->user_id = auth()->user()->id;
+
+        $post->save();
+
+        return redirect('/blog')->with('message', 'Your post has been updated!');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($slug)
     {
-        $post = Post::where('slug', $slug);
+        $post = Post::where('slug', $slug)->first();
         $post->delete();
 
         return redirect('/blog')
             ->with('message', 'Your post has been deleted!');
     }
 }
-

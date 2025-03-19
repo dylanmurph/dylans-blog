@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ReviewRequestController;
+use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
@@ -25,11 +29,18 @@ Route::resource('/blog', PostsController::class);
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 Route::get('contact', [ContactFormController::class, 'create']);
-Route::post('contact', [ContactFormController::class, 'store']);
+Route::post('contact', [ContactFormController::class, 'send']);
 
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/');
 })->name('logout');
+
+Route::resource('reviews', ReviewsController::class);
+Route::resource('news', NewsController::class);
+
+Route::get('/review-request', [ReviewRequestController::class, 'create'])->name('review-request');
+Route::post('/review-request', [ReviewRequestController::class, 'store'])->name('review-request.store');

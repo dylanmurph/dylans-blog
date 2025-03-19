@@ -25,14 +25,14 @@
             </a>
 
             <!-- News Link -->
-            <a href="/blog?category=news" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300">
+            <a href="/news" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300">
                 News
                 <div class="absolute bottom-0 left-0 w-full h-px bg-white opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
             </a>
 
             <!-- Reviews Link  -->
             <div class="relative">
-                <a href="/blog?category=reviews" class="text-white font-semibold hover:text-gray-200 py-2 px-4 transition duration-300 group" id="reviews-toggle">
+                <a href="/reviews" class="text-white font-semibold hover:text-gray-200 py-2 px-4 transition duration-300 group" id="reviews-toggle">
                     Reviews
                     <div class="absolute bottom-0 left-0 w-full h-px bg-white opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
                 </a>
@@ -50,9 +50,12 @@
                     <img src="/images/login.png" alt="Login" class="h-8 w-8">
                 </a>
                 @if(Auth::check())
-                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 hidden dropdown-menu">
-                        <span class="block px-4 py-2 text-gray-700">{{ Auth::user()->name }}</span>
-                        <a href="{{ route('logout') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    <div class="absolute right-0 mt-[2px] w-48 rounded-b-lg py-2 z-20 hidden dropdown-menu" style="background: linear-gradient(to right, #0c9166, #0c9668); border: 2px solid white; border-top: none;">
+                        <div class="px-4 py-3 border-b border-white text-center">
+                            <span class="block text-sm text-white font-bold">{{ Auth::user()->name }}</span>
+                        </div>
+                        <a href="{{ route('logout') }}"
+                           class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
@@ -60,27 +63,53 @@
                             {{ csrf_field() }}
                         </form>
                     </div>
+
                 @endif
             </div>
         </nav>
 
         <!-- Mobile Menu (hidden by default) -->
         <div class="mobile-menu hidden flex-col space-y-4">
-            <a href="/blog" class="text-white py-2 px-4">
-                Blog
-            </a>
-            <a href="/blog?category=news" class="text-white py-2 px-4">
-                News
-            </a>
-            <a href="/blog?category=reviews" class="text-white py-2 px-4">
-                Reviews
-            </a>
-            <a href="/contact" class="text-white py-2 px-4">
-                Contact
-            </a>
-            <a href="{{ route('login') }}" class="text-white py-2 px-4">
-                Login
-            </a>
+            <a href="/blog" class="text-white py-2 px-4">Blog</a>
+            <a href="/news" class="text-white py-2 px-4">News</a>
+            <a href="/reviews" class="text-white py-2 px-4">Reviews</a>
+            <a href="/contact" class="text-white py-2 px-4">Contact</a>
+            <a href="{{ route('login') }}" class="text-white py-2 px-4">Login</a>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginLink = document.querySelector('.login-link');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            if (loginLink && dropdownMenu) {
+                loginLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    dropdownMenu.classList.toggle('hidden');
+                });
+
+                // Close dropdown with animation
+                document.addEventListener('click', function (event) {
+                    if (!loginLink.contains(event.target) && !dropdownMenu.contains(event.target) && !dropdownMenu.classList.contains('hidden')) {
+                        dropdownMenu.classList.add('sliding-up');
+                        setTimeout(() => {
+                            dropdownMenu.classList.add('hidden');
+                            dropdownMenu.classList.remove('sliding-up');
+                        }, 200);
+                    }
+                });
+            }
+
+            // Mobile menu functionality
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function () {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
 </header>

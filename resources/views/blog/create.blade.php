@@ -39,16 +39,6 @@
                 placeholder="Description..."
                 class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none"></textarea>
 
-            <!-- Category Field -->
-            <div class="mb-4">
-                <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
-                <select name="category" class="w-full p-3 mt-2 border border-gray-300 rounded-lg">
-                    <option value="news">News</option>
-                    <option value="reviews">Reviews</option>
-                    <!-- Add more categories as needed -->
-                </select>
-            </div>
-
             <div class="bg-grey-lighter pt-15">
                 <label class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
                 <span class="mt-2 text-base leading-normal">
@@ -63,7 +53,7 @@
 
             <button
                 type="submit"
-                class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+                class="uppercase mt-15 bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                 Submit Post
             </button>
         </form>

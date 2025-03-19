@@ -10,10 +10,10 @@ class ContactFormController extends Controller
 {
     public function create()
     {
-        return view('contact.create');
+        return view('contact');
     }
 
-    public function store()
+    public function send()
     {
         $data = request()->validate([
             'name' => 'required',

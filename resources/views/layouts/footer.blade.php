@@ -4,8 +4,7 @@
             <h3 class="text-lg font-bold">Quick Links</h3>
             <ul class="pt-4 text-sm">
                 <li><a href="/" class="hover:text-gray-200">Home</a></li>
-                <li><a href="/about" class="hover:text-gray-200">About Us</a></li>
-                <li><a href="/services" class="hover:text-gray-200">Services</a></li>
+                <li><a href="/about" class="hover:text-gray-200">About</a></li>
                 <li><a href="/contact" class="hover:text-gray-200">Contact</a></li>
             </ul>
         </div>

@@ -37,25 +37,41 @@
 
             <textarea
                 name="description"
-                placeholder="Description..."
-                class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none">{{ $post->description }}</textarea>
+                class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none mt-8">{{ $post->description }}</textarea>
 
-            <!-- Category Field (Pre-filled with the current category) -->
-            <div class="mb-4">
-                <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
-                <select name="category" class="w-full p-3 mt-2 border border-gray-300 rounded-lg">
+            <!-- Current Image Display -->
+            <div class="mt-8">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Current Image</label>
+                <img src="{{ asset('images/blog/' . $post->image_path) }}"
+                     alt="Current Image"
+                     class="w-64 h-64 object-cover rounded-lg">
+            </div>
+
+            <!-- Image Upload -->
+            <div class="bg-grey-lighter pt-8">
+                <label class="w-44 flex flex-col items-center px-2 py-3 bg-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
+                    <span class="mt-2 text-base leading-normal">Select New Image</span>
+                    <input type="file"
+                           name="image"
+                           class="hidden">
+                </label>
+            </div>
+
+            <!-- Category Field -->
+            <div class="mt-8">
+                <label for="category" class="block text-gray-700 text-sm font-bold mb-2">Category</label>
+                <select name="category"
+                        class="w-full p-3 border border-gray-300 rounded-lg">
                     <option value="news" {{ $post->category === 'news' ? 'selected' : '' }}>News</option>
                     <option value="reviews" {{ $post->category === 'reviews' ? 'selected' : '' }}>Reviews</option>
-                    <!-- Add more categories as needed -->
                 </select>
             </div>
 
             <button
                 type="submit"
-                class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
-                Submit Post
+                class="uppercase mt-15 bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+                Update Post
             </button>
         </form>
     </div>
-
 @endsection

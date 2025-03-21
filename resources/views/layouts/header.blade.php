@@ -25,28 +25,37 @@
             </a>
 
             <!-- News Link -->
-            <a href="/news" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300">
+            <a href="/news" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300 hover:opacity-75 cursor-pointer">
                 News
                 <div class="absolute bottom-0 left-0 w-full h-px bg-white opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
             </a>
 
-            <!-- Reviews Link  -->
+            <!-- Reviews Link with Dropdown -->
             <div class="relative">
-                <a href="/reviews" class="text-white font-semibold hover:text-gray-200 py-2 px-4 transition duration-300 group" id="reviews-toggle">
+                <a class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300 hover:opacity-75 cursor-pointer group" id="reviews-toggle">
                     Reviews
                     <div class="absolute bottom-0 left-0 w-full h-px bg-white opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
                 </a>
+                <div class="absolute right-0 top-10 w-48 rounded-b-lg py-2 z-20 hidden dropdown-menu" style="background: linear-gradient(to right, #0b8d63, #0b9165); border: 2px solid white; border-top: none;">
+                    <a href="/reviews" class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 border-b border-white hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center ">All Reviews</a>
+                    <a href="/reviews?type=driver" class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 border-b border-white hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center ">Drivers</a>
+                    <a href="/reviews?type=fairway" class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 border-b border-white hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center">Fairway Woods</a>
+                    <a href="/reviews?type=hybrid" class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 border-b border-white hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center">Hybrids</a>
+                    <a href="/reviews?type=iron" class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 border-b border-white hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center">Irons</a>
+                    <a href="/reviews?type=wedge" class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 border-b border-white hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center">Wedges</a>
+                    <a href="/reviews?type=putter" class="block px-4 py-3 pb-1 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center">Putters</a>
+                </div>
             </div>
 
             <!-- Contact Link -->
-            <a href="/contact" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300">
+            <a href="/contact" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300 hover:opacity-75 cursor-pointer">
                 Contact
                 <div class="absolute bottom-0 left-0 w-full h-px bg-white opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
             </a>
 
             <!-- Login/Logout Link with Image -->
             <div class="relative">
-                <a href="{{ Auth::check() ? '#' : route('login') }}" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300 group login-link">
+                <a href="{{ Auth::check() ? '#' : route('login') }}" class="text-white font-semibold hover:text-gray-200 relative py-2 px-4 transition duration-300 hover:opacity-75 cursor-pointer group login-link">
                     <img src="/images/login.png" alt="Login" class="h-8 w-8">
                 </a>
                 @if(Auth::check())
@@ -63,7 +72,6 @@
                             {{ csrf_field() }}
                         </form>
                     </div>
-
                 @endif
             </div>
         </nav>
@@ -72,7 +80,15 @@
         <div class="mobile-menu hidden flex-col space-y-4">
             <a href="/blog" class="text-white py-2 px-4">Blog</a>
             <a href="/news" class="text-white py-2 px-4">News</a>
-            <a href="/reviews" class="text-white py-2 px-4">Reviews</a>
+            <a href="#" class="text-white py-2 px-4" id="mobile-reviews-toggle">Reviews</a>
+            <div class="hidden flex-col space-y-2 pl-4" id="mobile-reviews-dropdown">
+                <a href="#" class="text-white py-2 px-4">Drivers</a>
+                <a href="#" class="text-white py-2 px-4">Fairway Woods</a>
+                <a href="#" class="text-white py-2 px-4">Hybrids</a>
+                <a href="#" class="text-white py-2 px-4">Irons</a>
+                <a href="#" class="text-white py-2 px-4">Wedges</a>
+                <a href="#" class="text-white py-2 px-4">Putters</a>
+            </div>
             <a href="/contact" class="text-white py-2 px-4">Contact</a>
             <a href="{{ route('login') }}" class="text-white py-2 px-4">Login</a>
         </div>
@@ -81,33 +97,62 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const loginLink = document.querySelector('.login-link');
-            const dropdownMenu = document.querySelector('.dropdown-menu');
+            const loginDropdownMenu = loginLink.nextElementSibling;
+            const reviewsToggle = document.getElementById('reviews-toggle');
+            const reviewsDropdownMenu = reviewsToggle.nextElementSibling;
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileReviewsToggle = document.getElementById('mobile-reviews-toggle');
+            const mobileReviewsDropdown = document.getElementById('mobile-reviews-dropdown');
 
-            if (loginLink && dropdownMenu) {
+            // Login dropdown functionality
+            if (loginLink && loginDropdownMenu) {
                 loginLink.addEventListener('click', function (event) {
                     event.preventDefault();
-                    dropdownMenu.classList.toggle('hidden');
+                    loginDropdownMenu.classList.toggle('hidden');
                 });
 
-                // Close dropdown with animation
                 document.addEventListener('click', function (event) {
-                    if (!loginLink.contains(event.target) && !dropdownMenu.contains(event.target) && !dropdownMenu.classList.contains('hidden')) {
-                        dropdownMenu.classList.add('sliding-up');
+                    if (!loginLink.contains(event.target) && !loginDropdownMenu.contains(event.target) && !loginDropdownMenu.classList.contains('hidden')) {
+                        loginDropdownMenu.classList.add('sliding-up');
                         setTimeout(() => {
-                            dropdownMenu.classList.add('hidden');
-                            dropdownMenu.classList.remove('sliding-up');
+                            loginDropdownMenu.classList.add('hidden');
+                            loginDropdownMenu.classList.remove('sliding-up');
+                        }, 200);
+                    }
+                });
+            }
+
+            // Reviews dropdown functionality
+            if (reviewsToggle && reviewsDropdownMenu) {
+                reviewsToggle.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    reviewsDropdownMenu.classList.toggle('hidden');
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!reviewsToggle.contains(event.target) && !reviewsDropdownMenu.contains(event.target) && !reviewsDropdownMenu.classList.contains('hidden')) {
+                        reviewsDropdownMenu.classList.add('sliding-up');
+                        setTimeout(() => {
+                            reviewsDropdownMenu.classList.add('hidden');
+                            reviewsDropdownMenu.classList.remove('sliding-up');
                         }, 200);
                     }
                 });
             }
 
             // Mobile menu functionality
-            const mobileMenuButton = document.querySelector('.mobile-menu-button');
-            const mobileMenu = document.querySelector('.mobile-menu');
-
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function () {
                     mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Mobile reviews dropdown functionality
+            if (mobileReviewsToggle && mobileReviewsDropdown) {
+                mobileReviewsToggle.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    mobileReviewsDropdown.classList.toggle('hidden');
                 });
             }
         });

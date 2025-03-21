@@ -40558,6 +40558,14 @@ h1, h2, h3 {
   }
 }
 
+.fade-mask {
+  display: inline-block;
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+          mask-image: radial-gradient(circle, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

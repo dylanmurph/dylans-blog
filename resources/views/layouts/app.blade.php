@@ -21,6 +21,22 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <!-- CKEDITOR -->
+    <link rel="stylesheet" href="{{ asset('ckeditor/ckeditor5/ckeditor5.css') }}">
+    <link rel="stylesheet" href="{{ asset('ckeditor/style.css') }}">
+
+    <script type="importmap">
+        {
+          "imports": {
+            "ckeditor5": "/ckeditor/ckeditor5/ckeditor5.js",
+            "ckeditor5/": "/ckeditor/ckeditor5/"
+          }
+        }
+    </script>
+
+    <script type="module" src="{{ asset('ckeditor/main.js') }}"></script>
+
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans flex flex-col min-h-screen">
 <div id="app" class="flex-grow">

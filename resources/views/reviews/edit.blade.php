@@ -47,14 +47,17 @@
                     @endfor
                 </select>
             </div>
-
-            <textarea name="content" class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none mt-8">{{ $review->content }}</textarea>
+            <div class="p-6">
+                <h2 class="text-2xl mt-6">
+                    Review Content:
+                </h2>
+                <textarea name="content" id="editor-update">{{ $review->content }}</textarea>
+            </div>
 
             <textarea name="pros" class="py-10 bg-transparent block border-b-2 w-full h-40 text-xl outline-none mt-8">{{ $review->pros }}</textarea>
 
             <textarea name="cons" class="py-10 bg-transparent block border-b-2 w-full h-40 text-xl outline-none mt-8">{{ $review->cons }}</textarea>
 
-            <!-- Current Image Display -->
             <div class="mt-8">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Current Image</label>
                 <img src="{{ asset('images/reviews/' . $review->image_path) }}"

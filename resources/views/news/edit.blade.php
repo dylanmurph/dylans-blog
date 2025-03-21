@@ -29,9 +29,13 @@
             <input type="text" name="title" value="{{ $news->title }}"
                    class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
 
-            <textarea name="description" class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none mt-8">{{ $news->description }}</textarea>
+            <div class="p-6">
+                <h2 class="text-2xl mt-6">
+                    News Content:
+                </h2>
+                <textarea name="content" id="editor-update">{{ $news->content }}</textarea>
+            </div>
 
-            <!-- Current Image Display -->
             <div class="mt-8">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Current Image</label>
                 <img src="{{ asset('images/news/' . $news->image_path) }}"

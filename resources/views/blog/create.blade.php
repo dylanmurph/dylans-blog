@@ -3,7 +3,7 @@
 @section('content')
     <div class="w-4/5 m-auto text-left">
         <div class="py-15">
-            <h1 class="text-6xl">
+            <h1 class="text-4xl text-center p-6">
                 Create Post
             </h1>
         </div>
@@ -22,10 +22,7 @@
     @endif
 
     <div class="w-4/5 m-auto pt-20">
-        <form
-            action="/blog"
-            method="POST"
-            enctype="multipart/form-data">
+        <form action="/blog" method="POST" enctype="multipart/form-data">
             @csrf
 
             <input
@@ -34,20 +31,21 @@
                 placeholder="Title..."
                 class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
 
-            <textarea
-                name="description"
-                placeholder="Description..."
-                class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none"></textarea>
+            <div class="p-6">
+                <h2 class="text-2xl mt-6">
+                    Post Content:
+                </h2>
+                <textarea name="description" id="editor" placeholder="Description..."></textarea>
+            </div>
+
 
             <div class="bg-grey-lighter pt-15">
-                <label class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
-                <span class="mt-2 text-base leading-normal">
-                    Select a file
-                </span>
-                    <input
-                        type="file"
-                        name="image"
-                        class="hidden">
+                <label
+                    class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
+                    <span class="mt-2 text-base leading-normal">
+                        Select a file
+                    </span>
+                    <input type="file" name="image" class="hidden">
                 </label>
             </div>
 
@@ -58,5 +56,4 @@
             </button>
         </form>
     </div>
-
 @endsection

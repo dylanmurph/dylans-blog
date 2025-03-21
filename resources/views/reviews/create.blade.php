@@ -49,8 +49,12 @@
                 </select>
             </div>
 
-            <textarea name="content" placeholder="Review content..."
-                      class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none mt-8"></textarea>
+            <div class="p-6">
+                <h2 class="text-2xl mt-6">
+                    Review Content:
+                </h2>
+                <textarea name="content" id="editor" placeholder="Description..."></textarea>
+            </div>
 
             <textarea name="pros" placeholder="Pros (one per line)..."
                       class="py-10 bg-transparent block border-b-2 w-full h-40 text-xl outline-none mt-8"></textarea>

@@ -33,8 +33,12 @@
                 <option value="industry">Industry News</option>
             </select>
 
-            <textarea name="content" placeholder="Content..."
-                      class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none mt-8"></textarea>
+            <div class="p-6">
+                <h2 class="text-2xl mt-6">
+                   News Content:
+                </h2>
+                <textarea name="content" id="editor" placeholder="Description..."></textarea>
+            </div>
 
             <div class="bg-grey-lighter pt-15">
                 <label class="w-44 flex flex-col items-center px-2 py-3 bg-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">

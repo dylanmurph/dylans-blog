@@ -64,7 +64,7 @@ class NewsController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'description' => 'required',
+            'content' => 'required',
             'image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);
 
@@ -77,7 +77,7 @@ class NewsController extends Controller
         }
 
         $news->title = $request->input('title');
-        $news->description = $request->input('description');
+        $news->content = $request->input('content');
         $news->slug = SlugService::createSlug(News::class, 'slug', $request->title);
 
         $news->save();

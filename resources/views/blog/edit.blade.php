@@ -35,11 +35,13 @@
                 value="{{ $post->title }}"
                 class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
 
-            <textarea
-                name="description"
-                class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none mt-8">{{ $post->description }}</textarea>
+            <div class="p-6">
+                <h2 class="text-2xl mt-6">
+                    Post Content:
+                </h2>
+                <textarea name="description" id="editor-update">{{ $post->description }}</textarea>
+            </div>
 
-            <!-- Current Image Display -->
             <div class="mt-8">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Current Image</label>
                 <img src="{{ asset('images/blog/' . $post->image_path) }}"
@@ -47,7 +49,6 @@
                      class="w-64 h-64 object-cover rounded-lg">
             </div>
 
-            <!-- Image Upload -->
             <div class="bg-grey-lighter pt-8">
                 <label class="w-44 flex flex-col items-center px-2 py-3 bg-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
                     <span class="mt-2 text-base leading-normal">Select New Image</span>
@@ -57,7 +58,6 @@
                 </label>
             </div>
 
-            <!-- Category Field -->
             <div class="mt-8">
                 <label for="category" class="block text-gray-700 text-sm font-bold mb-2">Category</label>
                 <select name="category"

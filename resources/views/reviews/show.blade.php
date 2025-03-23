@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="w-4/5 mx-auto">
+    <div class="w-full md:w-4/5 mx-auto">
         <div class="pb-8 mt-24">
             <img src="{{ asset('images/reviews/' . $review->image_path) }}" alt="{{ $review->title }}"
                  class="w-full md:w-3/4 mx-auto object-cover rounded-lg shadow-xl">
@@ -19,8 +19,7 @@
             Equipment Type: <span class="font-bold">{{ ucfirst($review->equipment_type) }}</span>
         </div>
 
-        <div
-            class="bg-white post-content w-full text-xl text-gray-800 pt-8 p-10 rounded-lg shadow-xl leading-relaxed font-light space-y-6">
+        <div class="bg-white post-content w-full md:w-4/5 text-xl text-gray-800 pt-8 p-10 md:px-10 px-0 rounded-lg shadow-xl leading-relaxed font-light space-y-6">
             {!! $review->content !!}
             @if($review->pros)
                 <div class="bg-green-50 p-6 rounded-lg">
@@ -48,28 +47,5 @@
                 </div>
             @endif
         </div>
-    </div>
-
-    <div class="grid grid-cols-2 gap-8 mt-8">
-        @if (isset(Auth::user()->id) && Auth::user()->id == $review->user_id)
-            <div class="mt-8">
-                <span class="float-right">
-                    <a href="/reviews/{{ $review->slug }}/edit"
-                       class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
-                        Edit
-                    </a>
-                </span>
-
-                <span class="float-right">
-                    <form action="/reviews/{{ $review->slug }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button class="text-red-500 pr-3" type="submit">
-                            Delete
-                        </button>
-                    </form>
-                </span>
-            </div>
-        @endif
     </div>
 @endsection

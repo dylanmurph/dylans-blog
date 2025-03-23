@@ -3,16 +3,20 @@
 @section('content')
 
     <div class="mt-16">
-        <section class="p-8">
+        <section class="p-0 md:p-8">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
-                    <h2 class="text-2xl font-bold text-center text-gray-700 mb-2">We'd Love to Hear From You. <br>Complete
-                        the form below to contact via email.</h2>
+                    <h2 class="text-2xl font-bold text-center text-gray-700 mb-2">
+                        Complete the form below to contact via email.
+                    </h2>
+                    <h2 class="text-lg font-bold text-center text-gray-700 mb-2">
+                        Or alternatively, Submit a review request and we can try our best to review it next
+                    </h2>
 
-                    <div class="text-center mb-10 mt-10 ">
+                    <div class="text-center mb-10 mt-10">
                         <a href="{{ route('review-request') }}"
-                           class="w-full px-6 py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-500 transition duration-300">
-                            Or alternatively: Submit a Review Request
+                           class="w-full px-4 py-2 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-500 transition duration-300">
+                            Review Request
                         </a>
                     </div>
                     <form action="/contact" method="POST">

@@ -18,7 +18,7 @@
     @endif
 
     @if (Auth::check())
-        <div class="pt-15 w-full m-auto">
+        <div class="pt-15 w-4/5 m-auto">
             <a href="/reviews/create"
                class="bg-green-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
                 Write Review

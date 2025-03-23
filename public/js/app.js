@@ -19262,6 +19262,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 __webpack_require__(/*! ./login-dropdown */ "./resources/js/login-dropdown.js");
 __webpack_require__(/*! ./reviews-dropdown */ "./resources/js/reviews-dropdown.js");
+__webpack_require__(/*! ./mobile-reviews-dropdown */ "./resources/js/mobile-reviews-dropdown.js");
 __webpack_require__(/*! ./mobile-menu */ "./resources/js/mobile-menu.js");
 __webpack_require__(/*! ./mobile-login-dropdown */ "./resources/js/mobile-login-dropdown.js");
 
@@ -19385,6 +19386,34 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileMenuButton.addEventListener('click', function () {
       mobileMenu.classList.toggle('show');
       document.body.classList.toggle('no-scroll');
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/mobile-reviews-dropdown.js":
+/*!*************************************************!*\
+  !*** ./resources/js/mobile-reviews-dropdown.js ***!
+  \*************************************************/
+/***/ (() => {
+
+document.addEventListener('DOMContentLoaded', function () {
+  var reviewsToggle = document.getElementById('mobile-reviews-toggle');
+  var reviewsDropdownMenu = reviewsToggle.nextElementSibling;
+  if (reviewsToggle && reviewsDropdownMenu) {
+    reviewsToggle.addEventListener('click', function (event) {
+      event.preventDefault();
+      reviewsDropdownMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', function (event) {
+      if (!reviewsToggle.contains(event.target) && !reviewsDropdownMenu.contains(event.target) && !reviewsDropdownMenu.classList.contains('hidden')) {
+        reviewsDropdownMenu.classList.add('sliding-up');
+        setTimeout(function () {
+          reviewsDropdownMenu.classList.add('hidden');
+          reviewsDropdownMenu.classList.remove('sliding-up');
+        }, 200);
+      }
     });
   }
 });

@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="w-4/5 mx-auto">
+    <div class="w-full md:w-4/5 mx-auto">
         <div class="pb-8 mt-24">
-            <img src="{{ asset('images/blog/' . $post->image_path) }}"
-                 alt="{{ $post->title }}"
+            <img src="{{ asset('images/blog/' . $post->image_path) }}" alt="{{ $post->title }}"
                  class="w-full md:w-3/4 mx-auto object-cover rounded-lg shadow-xl">
         </div>
 
@@ -20,8 +19,7 @@
                 Created on {{ date('jS M Y', strtotime($post->updated_at)) }}</span>
         </div>
 
-        <div
-            class="bg-white post-content w-full text-xl text-gray-800 pt-8 p-10 rounded-lg shadow-xl leading-relaxed font-light space-y-6">
+        <div class="bg-white post-content w-full md:w-4/5 text-xl text-gray-800 pt-8 p-10 md:px-10 px-0 rounded-lg shadow-xl leading-relaxed font-light space-y-6">
             {!! $post->description !!}
         </div>
     </div>

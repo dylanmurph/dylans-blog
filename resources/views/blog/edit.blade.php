@@ -58,15 +58,6 @@
                 </label>
             </div>
 
-            <div class="mt-8">
-                <label for="category" class="block text-gray-700 text-sm font-bold mb-2">Category</label>
-                <select name="category"
-                        class="w-full p-3 border border-gray-300 rounded-lg">
-                    <option value="news" {{ $post->category === 'news' ? 'selected' : '' }}>News</option>
-                    <option value="reviews" {{ $post->category === 'reviews' ? 'selected' : '' }}>Reviews</option>
-                </select>
-            </div>
-
             <button
                 type="submit"
                 class="uppercase mt-15 bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">

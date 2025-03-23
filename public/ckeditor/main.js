@@ -1,5 +1,6 @@
 import {
     ClassicEditor,
+    SourceEditing,
     AutoImage,
     Autosave,
     BalloonToolbar,
@@ -22,14 +23,11 @@ import {
     Underline
 } from 'ckeditor5';
 
-/**
- * Create a free account with a trial: https://portal.ckeditor.com/checkout?plan=free
- */
-const LICENSE_KEY = 'GPL'; // or <YOUR_LICENSE_KEY>.
+const LICENSE_KEY = 'GPL';
 
 const editorConfig = {
     toolbar: {
-        items: ['heading', '|', 'bold', 'italic', 'underline', '|', 'link', '|', 'bulletedList', 'numberedList'],
+        items: ['heading', '|', 'bold', 'italic', 'underline', '|', 'link', '|', 'bulletedList', 'numberedList', 'sourceEditing', '|'],
         shouldNotGroupWhenFull: false
     },
     plugins: [
@@ -52,7 +50,8 @@ const editorConfig = {
         Link,
         List,
         Paragraph,
-        Underline
+        Underline,
+        SourceEditing
     ],
     balloonToolbar: ['bold', 'italic', '|', 'link', '|', 'bulletedList', 'numberedList'],
     heading: {
@@ -69,7 +68,6 @@ const editorConfig = {
     image: {
         toolbar: ['imageTextAlternative', '|', 'imageStyle:inline', 'imageStyle:wrapText', 'imageStyle:breakText', '|', 'resizeImage']
     },
-    initialData: '',
     licenseKey: LICENSE_KEY,
     link: {
         addTargetToExternalLinks: true,
@@ -82,7 +80,8 @@ const editorConfig = {
             }
         }
     },
-    placeholder: 'Type or paste your content here!'
+    placeholder: 'Type or paste your content here!',
+    allowedContent: true
 };
 
 function initEditor(editorId) {

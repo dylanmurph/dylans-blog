@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ReviewRequestController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
@@ -51,3 +52,5 @@ Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users
 Route::get('/admin/review-requests', [AdminController::class, 'reviewRequests'])->name('admin.reviewRequests');
 
 Route::get('/review-requests', [ReviewRequestController::class, 'index'])->name('review-requests.index');
+
+Route::post('/users/{id}/make-admin', [UserController::class, 'makeAdmin'])->name('users.makeAdmin');

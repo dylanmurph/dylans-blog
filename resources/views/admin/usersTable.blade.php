@@ -18,6 +18,8 @@
                     <th class="py-2 px-4 border border-gray-300">Name</th>
                     <th class="py-2 px-4 border border-gray-300">Email</th>
                     <th class="py-2 px-4 border border-gray-300">Created At</th>
+                    <th class="py-2 px-4 border border-gray-300">Role</th>
+                    <th class="py-2 px-4 border border-gray-300">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,6 +29,17 @@
                         <td class="py-2 px-4 border border-gray-300">{{ $user->name }}</td>
                         <td class="py-2 px-4 border border-gray-300">{{ $user->email }}</td>
                         <td class="py-2 px-4 border border-gray-300">{{ $user->created_at }}</td>
+                        <td class="py-2 px-4 border border-gray-300">{{ $user->role }}</td>
+                        <td class="text-center py-2 px-4 border border-gray-300">
+                            @if($user->role !== 'admin')
+                                <form action="{{ route('users.makeAdmin', $user->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="p-2 text-white bg-green-700 rounded-full shadow-md hover:bg-green-500 hover:cursor-pointer transition duration-300">
+                                        Make Admin
+                                    </button>
+                                </form>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

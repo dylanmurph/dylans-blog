@@ -53,9 +53,11 @@
                         <div class="px-4 py-3 border-b border-white text-center">
                             <span class="block text-sm text-white font-bold">{{ Auth::user()->name }}</span>
                         </div>
-                        <a href="{{ route('admin.index') }}" class="block border-b border-white px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center">
-                            Admin Panel
-                        </a>
+                        @if(Auth::user()->role === 'admin')
+                            <a href="{{ route('admin.index') }}" class="block border-b border-white px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center">
+                                Admin Panel
+                            </a>
+                        @endif
                         <a href="{{ route('logout') }}" class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
@@ -86,9 +88,11 @@
             </a>
             @if(Auth::check())
                 <div class="hidden flex-col space-y-2 pl-4 mobile-login-dropdown" id="mobile-login-dropdown">
-                    <a href="{{ route('admin.index') }}" class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center">
-                        Admin Panel
-                    </a>
+                    @if(Auth::user()->role === 'admin')
+                        <a href="{{ route('admin.index') }}" class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center">
+                            Admin Panel
+                        </a>
+                    @endif
                     <a href="{{ route('logout') }}" class="block px-4 py-3 text-sm text-white font-semibold hover:bg-green-700 hover:scale-105 hover:text-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out text-center" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>

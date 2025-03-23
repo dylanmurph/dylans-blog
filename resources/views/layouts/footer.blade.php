@@ -1,6 +1,6 @@
-<footer class="bg-gradient-to-r from-green-700 to-green-500 py-8 mt-20">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-white">
+<footer class="bg-gradient-to-r from-green-700 to-green-500 py-8 mt-20 px-4 md:px-8 lg:px-16">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div class="text-white mb-6 md:mb-0">
             <h3 class="text-lg font-bold">Quick Links</h3>
             <ul class="pt-4 text-sm">
                 <li><a href="/" class="hover:text-gray-200">Home</a></li>

@@ -20,9 +20,9 @@
 
 **Models:**
 
-News Model
-Review Model
-Review Question Model
+ - News Model
+ - Review Model
+ - Review Question Model
 
 ------------
 

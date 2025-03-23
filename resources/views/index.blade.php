@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="mt-16">
+    <div class="p-0 mt-16 md:mt-16">
         <div class="relative w-full h-96 bg-cover bg-center" style="background-image: url('/images/banner.jpg');">
             <div class="banner-image absolute inset-0 flex items-center justify-start ml-24 ">
                 <img src="/images/banner.png" alt="Driver's Digest Logo" class="drop-shadow h-2/5 hidden md:block">
@@ -22,9 +22,8 @@
             </div>
         </div>
 
-        <section class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
-            <div
-                class="text-center p-6 bg-white rounded-lg shadow-lg border border-gray-200 transform scale-100 hover:scale-105 transition duration-300 max-w-full">
+        <section class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 py-6 px-0 md:px-8">
+            <div class="text-center p-6 bg-white rounded-lg shadow-lg border border-gray-200 transform scale-100 hover:scale-105 transition duration-300 max-w-full">
                 <h2 class="text-3xl font-semibold mb-4 text-center">Latest Post</h2>
                 @if($latestBlogPost)
                     <img src="{{ asset('images/blog/' . $latestBlogPost->image_path) }}"
@@ -103,7 +102,7 @@
         ?>
         <div class="max-w-7xl mx-auto bg-white border-2 border-gray-200 rounded-xl shadow-lg p-8">
             <h2 class="text-3xl font-semibold mb-4 text-center">Reviews</h2>
-            <section class="p-8">
+            <section class="p-0 md:p-8">
                 <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     <?php foreach ($equipment as $item): ?>
                     <div class="relative bg-gray-100 rounded-lg overflow-hidden shadow-md border-2 border-gray-300">

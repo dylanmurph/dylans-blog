@@ -28,7 +28,7 @@
     @endif
 
     @foreach ($posts as $post)
-        <div class="bg-white rounded-lg shadow-xl p-6 sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 mt-6 mb-6">
+        <div class="bg-white rounded-lg shadow-xl p-6 sm:grid grid-cols-2 gap-20 w-full md:w-4/5 mx-auto py-15 mt-6 mb-6">
             <div class="flex justify-center items-center">
                 <img src="{{ asset('images/blog/' . $post->image_path) }}" alt=""
                      class="max-h-96 rounded-xl shadow-2xl border-2 border-black">
@@ -43,35 +43,29 @@
             </span>
                 <br>
                 <a href="/blog/{{ $post->slug }}"
-                   class="w-56 text-center mt-auto uppercase bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+                   class="w-full md:w-56 text-center mt-auto uppercase bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                     Keep Reading
                 </a>
 
                 <div class="mx-auto">
                     @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
                         <span class="float-right">
-                    <a
-                        href="/blog/{{ $post->slug }}/edit"
-                        class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
-                        Edit
-                    </a>
-                </span>
+                        <a href="/blog/{{ $post->slug }}/edit"
+                           class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
+                            Edit
+                        </a>
+                    </span>
 
                         <span class="float-right">
-                     <form
-                         action="/blog/{{ $post->slug }}"
-                         method="POST">
-                        @csrf
-                         @method('delete')
+                        <form action="/blog/{{ $post->slug }}" method="POST">
+                            @csrf
+                            @method('delete')
 
-                        <button
-                            class="text-red-500 pr-3"
-                            type="submit">
-                            Delete
-                        </button>
-
-                    </form>
-                </span>
+                            <button class="text-red-500 pr-3" type="submit">
+                                Delete
+                            </button>
+                        </form>
+                    </span>
                 </div>
                 @endif
             </div>

@@ -14,7 +14,6 @@
             </h1>
         </div>
 
-
         <div class="mb-8 text-gray-600 text-right">
             <span>By <span class="font-bold text-gray-800 ">{{ $news->user->name }}</span>,
                 Created on {{ date('jS M Y', strtotime($news->updated_at)) }}</span>
@@ -22,7 +21,8 @@
             Category: <span class="font-bold">{{ ucfirst($news->category) }}</span>
         </div>
 
-        <div class="bg-white post-content w-full text-xl text-gray-800 pt-8 p-10 rounded-lg shadow-xl leading-relaxed font-light space-y-6">
+        <div
+            class="bg-white post-content w-full text-xl text-gray-800 pt-8 p-10 rounded-lg shadow-xl leading-relaxed font-light space-y-6">
             {!! $news->content !!}
         </div>
     </div>

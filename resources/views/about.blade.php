@@ -3,7 +3,7 @@
 @section('content')
     <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-green-100 to-gray-100"></div>
     <div class="relative container mx-auto px-6 py-32">
-        <!-- Header Section -->
+
         <div class="text-center mb-20">
             <h1 class="text-5xl font-bold bg-gradient-to-r from-green-700 to-green-500 bg-clip-text text-transparent mb-7">
                 Drivers Digest
@@ -13,11 +13,10 @@
             </p>
         </div>
 
-        <!-- Main Content -->
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
-            <!-- Left Column: Text Content -->
+
             <div class="space-y-12">
-                <!-- Welcome Section -->
+
                 <div class="bg-white p-12 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
                     <h2 class="text-3xl font-bold text-green-700 mb-6">
                         Welcome to Drivers Digest
@@ -32,7 +31,6 @@
                     </p>
                 </div>
 
-                <!-- Mission Statement -->
                 <div class="bg-gradient-to-r from-green-600 to-green-500 p-12 rounded-3xl text-white shadow-xl">
                     <h2 class="text-2xl font-bold mb-4">Our Mission</h2>
                     <p class="text-lg leading-relaxed">
@@ -41,7 +39,6 @@
                     </p>
                 </div>
 
-                <!-- Features Grid -->
                 <div class="grid grid-cols-2 gap-6">
                     <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                         <div class="flex items-center space-x-3 mb-3">
@@ -94,7 +91,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="flex flex-col items-center space-y-64">
 

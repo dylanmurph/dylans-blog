@@ -2,6 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "posts.css";
+@import "header-dropdown.css";
+@import "mobile-dropdown.css";
+
 .background-image {
     background-image: url('/images/golf-course.png');
     background-position: center center;
@@ -43,91 +47,11 @@ h1, h2, h3 {
     background: #11895f;
 }
 
+/* Im using this to have a drop shadow around png images */
 .drop-shadow {
     filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.8));
 }
 
-.dropdown-menu {
-    transform-origin: top;
-    display: none;
-}
-
-.dropdown-menu:not(.hidden) {
-    display: block;
-    animation: slideDown 0.2s ease-out forwards;
-}
-
-.dropdown-menu.sliding-up {
-    animation: slideUp 0.2s ease-out forwards;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-1px) scaleY(0);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scaleY(1);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 1;
-        transform: translateY(0) scaleY(1);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(-1px) scaleY(0);
-    }
-}
-
-.post-content {
-    width: 100%;
-    max-width: 90%;
-    margin: 0 auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
 
 
-.post-content h1 {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
 
-.post-content h2 {
-    font-size: 2rem;
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.post-content h3 {
-    font-size: 1.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-
-.post-content p {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    font-weight: 300;
-}
-
-
-.post-content a {
-    color: #48bb78;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.post-content a:hover {
-    text-decoration: underline;
-}

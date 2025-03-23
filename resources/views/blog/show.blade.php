@@ -20,7 +20,8 @@
                 Created on {{ date('jS M Y', strtotime($post->updated_at)) }}</span>
         </div>
 
-        <div class="bg-white post-content w-full text-xl text-gray-800 pt-8 p-10 rounded-lg shadow-xl leading-relaxed font-light space-y-6">
+        <div
+            class="bg-white post-content w-full text-xl text-gray-800 pt-8 p-10 rounded-lg shadow-xl leading-relaxed font-light space-y-6">
             {!! $post->description !!}
         </div>
     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 
 class ReviewsController extends Controller
 {
@@ -104,6 +105,14 @@ class ReviewsController extends Controller
     public function destroy($slug)
     {
         $review = Review::where('slug', $slug)->first();
+
+        if ($review->image_path) {
+            $filePath = public_path('images/reviews/' . $review->image_path);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
+
         $review->delete();
 
         return redirect('/reviews')->with('message', 'Review deleted successfully!');

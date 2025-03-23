@@ -35,19 +35,21 @@
 
             <div class="p-6">
                 <h2 class="text-2xl mt-6">
-                   News Content:
+                    News Content:
                 </h2>
                 <textarea name="content" id="editor" placeholder="Description..."></textarea>
             </div>
 
             <div class="bg-grey-lighter pt-15">
-                <label class="w-44 flex flex-col items-center px-2 py-3 bg-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
+                <label
+                    class="w-44 flex flex-col items-center px-2 py-3 bg-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
                     <span class="mt-2 text-base leading-normal">Select Image</span>
                     <input type="file" name="image" class="hidden">
                 </label>
             </div>
 
-            <button type="submit" class="uppercase mt-15 bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+            <button type="submit"
+                    class="uppercase mt-15 bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                 Submit Article
             </button>
         </form>

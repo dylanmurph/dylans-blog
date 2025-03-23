@@ -16,8 +16,11 @@
                     <form action="{{ route('review-request.store') }}" method="POST">
                         @csrf
                         <div class="mb-6">
-                            <label for="product_type" class="block text-sm font-medium text-gray-700">Product Type</label>
-                            <select name="product_type" class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            <label for="product_type" class="block text-sm font-medium text-gray-700">Product
+                                Type</label>
+                            <select name="product_type"
+                                    class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                                    required>
                                 <option value="">Select Type</option>
                                 <option value="driver">Driver</option>
                                 <option value="iron">Iron</option>
@@ -32,28 +35,38 @@
                         </div>
 
                         <div class="mb-6">
-                            <label for="product_brand" class="block text-sm font-medium text-gray-700">Product Brand</label>
-                            <input type="text" name="product_brand" class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            <label for="product_brand" class="block text-sm font-medium text-gray-700">Product
+                                Brand</label>
+                            <input type="text" name="product_brand"
+                                   class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                                   required>
                             @error('product_brand')
                             <div class="text-red-500 mt-1">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="mb-6">
-                            <label for="product_name" class="block text-sm font-medium text-gray-700">Product Name</label>
-                            <input type="text" name="product_name" class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            <label for="product_name" class="block text-sm font-medium text-gray-700">Product
+                                Name</label>
+                            <input type="text" name="product_name"
+                                   class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                                   required>
                             @error('product_name')
                             <div class="text-red-500 mt-1">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="w-full px-6 py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-500 transition duration-300">Submit Review Request</button>
+                            <button type="submit"
+                                    class="w-full px-6 py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-500 transition duration-300">
+                                Submit Review Request
+                            </button>
                         </div>
                     </form>
                 @else
                     <div class="text-center text-gray-600">
-                        <p>Please <a href="{{ route('login') }}" class="text-green-600 hover:underline">login</a> to request a review</p>
+                        <p>Please <a href="{{ route('login') }}" class="text-green-600 hover:underline">login</a> to
+                            request a review</p>
                     </div>
                 @endauth
             </div>

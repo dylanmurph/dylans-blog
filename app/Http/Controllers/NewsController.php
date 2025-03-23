@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -88,6 +89,14 @@ class NewsController extends Controller
     public function destroy($slug)
     {
         $news = News::where('slug', $slug)->first();
+
+        if ($news->image_path) {
+            $filePath = public_path('images/news/' . $news->image_path);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
+
         $news->delete();
 
         return redirect('/news')->with('message', 'News article deleted successfully!');

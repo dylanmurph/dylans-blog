@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -88,6 +90,14 @@ class PostsController extends Controller
     public function destroy($slug)
     {
         $post = Post::where('slug', $slug)->first();
+
+        if ($post->image_path) {
+            $filePath = public_path('images/blog/' . $post->image_path);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
+
         $post->delete();
 
         return redirect('/blog')

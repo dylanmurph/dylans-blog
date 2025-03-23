@@ -120,3 +120,9 @@ php artisan db:import
 ```
 php artisan serve
 ```
+
+*Admin credentials for the site*
+```
+email: admin@driversdigest.com
+password: driversdigest
+```

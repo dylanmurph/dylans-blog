@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ReviewRequestController extends Controller
 {
+    public function index()
+    {
+        $reviewRequests = ReviewRequest::with('user')->get();
+        return view('reviewRequests.index', compact('reviewRequests'));
+    }
+
     public function __construct()
     {
         $this->middleware('auth');

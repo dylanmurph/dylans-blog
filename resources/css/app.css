@@ -6,6 +6,7 @@
 @import "header-dropdown.css";
 @import "mobile-dropdown.css";
 @import "index.css";
+@import "about.css";
 
 .background-image {
     background-image: url('/images/golf-course.png');

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="w-4/5 m-auto text-center">
+<div class="w-4/5 mt-10 m-auto text-center">
     <div class="py-15 border-b border-gray-200">
         <h1 class="text-6xl">
             Blog Posts
@@ -28,27 +28,25 @@
 @endif
 
 @foreach ($posts as $post)
-    <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
-        <div>
-            <img src="{{ asset('images/blog/' . $post->image_path) }}" alt="">
+    <div class="bg-white rounded-lg shadow-xl p-6 sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 mt-6 mb-6">
+        <div class="flex justify-center items-center">
+            <img src="{{ asset('images/blog/' . $post->image_path) }}" alt="" class="max-h-96 rounded-xl shadow-2xl border-2 border-black">
         </div>
-        <div>
-            <h2 class="text-gray-700 font-bold text-5xl pb-4">
+        <div class="flex flex-col">
+            <h2 class="text-gray-700 font-bold text-4xl pb-4">
                 {{ $post->title }}
             </h2>
 
             <span class="text-gray-500">
-                By <span class="font-bold italic text-gray-800">{{ $post->user->name }}</span>, Created on {{ date('jS M Y', strtotime($post->updated_at)) }}
+                By <span class="font-bold italic text-green-700">{{ $post->user->name }}</span>, Created on {{ date('jS M Y', strtotime($post->updated_at)) }}
             </span>
-
-            <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
-                {{ $post->description }}
-            </p>
-
-            <a href="/blog/{{ $post->slug }}" class="uppercase bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+            <br>
+            <a href="/blog/{{ $post->slug }}"
+               class="w-56 text-center mt-auto uppercase bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                 Keep Reading
             </a>
 
+            <div class="mx-auto">
             @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
                 <span class="float-right">
                     <a
@@ -73,6 +71,7 @@
 
                     </form>
                 </span>
+            </div>
             @endif
         </div>
     </div>

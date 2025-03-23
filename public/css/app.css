@@ -40680,6 +40680,28 @@ video {
   }
 }
 
+@media (max-width: 1100px) {
+  .about-image {
+    display: none !important;
+  }
+
+  .about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
 .background-image {
   background-image: url('/images/golf-course.png');
   background-position: center center;

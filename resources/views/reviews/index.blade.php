@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="w-4/5 mt-10 m-auto text-center">
+    <div class="w-full mt-10 m-auto text-center">
         <div class="py-15 border-b border-gray-200">
             <h1 class="text-6xl">
                 Equipment Reviews
@@ -10,15 +10,15 @@
     </div>
 
     @if (session()->has('message'))
-        <div class="w-4/5 m-auto mt-10 pl-2">
-            <p class="w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4">
+        <div class="w-full m-auto mt-10 pl-2">
+            <p class="w-full md:w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4">
                 {{ session()->get('message') }}
             </p>
         </div>
     @endif
 
     @if (Auth::check())
-        <div class="pt-15 w-4/5 m-auto">
+        <div class="pt-15 w-full m-auto">
             <a href="/reviews/create"
                class="bg-green-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
                 Write Review
@@ -27,7 +27,7 @@
     @endif
 
     @foreach ($reviews as $review)
-        <div class="bg-white rounded-lg shadow-xl p-6 sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 mt-6 mb-6">
+        <div class="bg-white rounded-lg shadow-xl p-6 sm:grid grid-cols-2 gap-20 w-full md:w-4/5 mx-auto py-15 mt-6 mb-6">
             <div class="flex justify-center items-center">
                 <img src="{{ asset('images/reviews/' . $review->image_path) }}" alt=""
                      class="max-h-96 rounded-xl shadow-2xl border-2 border-black">
@@ -49,7 +49,7 @@
                 </span>
                 <br>
                 <a href="/reviews/{{ $review->slug }}"
-                   class="w-56 text-center mt-auto uppercase bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+                   class="w-full md:w-56 text-center mt-auto uppercase bg-green-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                     Read Full Review
                 </a>
 

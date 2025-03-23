@@ -16,7 +16,7 @@
                     <br>
                     <h2 class="text-xl font-bold text-gray-600 mb-4">Elevate Your Golf Performance with our reviews and
                         insights</h2>
-                    <a href="/blog"
+                    <a href="/reviews"
                        class="inline-block px-6 py-3 mt-6 text-white bg-green-700 rounded-full shadow-md hover:bg-green-500 hover:cursor-pointer transition duration-300">Explore</a>
                 </div>
             </div>

@@ -40670,6 +40670,16 @@ video {
   }
 }
 
+@media (max-width: 1050px) {
+  .banner-image {
+    display: none;
+  }
+
+  .banner-content {
+    justify-content: center !important;
+  }
+}
+
 .background-image {
   background-image: url('/images/golf-course.png');
   background-position: center center;

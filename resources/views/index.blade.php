@@ -4,10 +4,10 @@
 
     <div class="mt-16">
         <div class="relative w-full h-96 bg-cover bg-center" style="background-image: url('/images/banner.jpg');">
-            <div class="absolute inset-0 flex items-center justify-start ml-24 ">
-                <img src="/images/banner.png" alt="Driver's Digest Logo" class="drop-shadow h-2/5">
+            <div class="banner-image absolute inset-0 flex items-center justify-start ml-24 ">
+                <img src="/images/banner.png" alt="Driver's Digest Logo" class="drop-shadow h-2/5 hidden md:block">
             </div>
-            <div class="absolute inset-0 flex justify-end items-center p-8">
+            <div class="banner-content absolute inset-0 flex justify-end items-center p-8">
                 <div class="max-w-md text-center bg-white rounded-lg shadow-2xl border border-gray-400 p-6"
                      style="box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7) !important; border: 2px solid #cbd5e0 !important;">
                     <h2 class="text-xl text-gray-600 mb-4">From Driver to Putter – We’ve Got You Covered</h2>

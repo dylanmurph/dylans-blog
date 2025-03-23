@@ -111,7 +111,12 @@ php artisan migrate
 npm run dev
 ```
 
+*Import admin user, blog posts*
+```
+php artisan db:import
+```
+
 *Run the server*
 ```
-php artisan server
+php artisan serve
 ```

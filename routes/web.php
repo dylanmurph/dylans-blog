@@ -54,3 +54,5 @@ Route::get('/admin/review-requests', [AdminController::class, 'reviewRequests'])
 Route::get('/review-requests', [ReviewRequestController::class, 'index'])->name('review-requests.index');
 
 Route::post('/users/{id}/make-admin', [UserController::class, 'makeAdmin'])->name('users.makeAdmin');
+
+

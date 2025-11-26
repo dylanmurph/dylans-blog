@@ -2,6 +2,8 @@
 
 **This is my adaptation of CodeWithDarys Laravel Blog Template for my Server Side Development Continuous Assessment 2**
 
+[Youtube Video](https://youtu.be/MCxDplOo7d8)
+
 # Unique features:
 
 - Dynamic latest blog post/news post on home page
